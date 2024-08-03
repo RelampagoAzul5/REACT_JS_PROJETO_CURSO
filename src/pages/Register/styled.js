@@ -1,5 +1,5 @@
 import * as colors from '../../config/colors';
-
+import { Container } from '../../styles/GlobalStyles';
 import styled from "styled-components";
 
 export const Form = styled.form`
@@ -24,3 +24,33 @@ export const Form = styled.form`
     }
   }
 `;
+export const DeleteButton = styled.button`
+  margin-top: 10px;
+  padding: 10px 78px;
+`
+export const FormContainer = styled(Container)`
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+export const ConfirmDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  p{
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  div button:last-child{
+    margin-left: 10px;
+  }
+
+  div button{
+  padding: 10px 30px;
+  }
+  `
