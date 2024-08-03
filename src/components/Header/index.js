@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaHome, FaSignInAlt, FaUserAlt, FaPowerOff } from 'react-icons/fa'
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch } from "react-redux";
@@ -11,7 +11,13 @@ import history from "../../services/history";
 export default function Header() {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const userName = useSelector(state => state.auth.user.nome);
+  const [nome, setNome] = useState('');
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isLoggedIn) return;
+    setNome(userName)
+  })
 
   const handleLogout = e => {
     e.preventDefault()
@@ -22,7 +28,7 @@ export default function Header() {
   return <Nav>
     <Link className="user" to="/register">
       <FaUserAlt />
-      {isLoggedIn ? <p color="#fff">{userName}</p> : <p>Crie sua conta</p>}
+      {isLoggedIn ? <p color="#fff" on>{nome}</p> : <p>Crie sua conta</p>}
     </Link>
     <div>
       <Link className="home" to="/">

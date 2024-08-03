@@ -34,7 +34,8 @@ export default function reducer(state = initialState, action) {
 
     case types.REGISTER_UPDATED_SUCCESS: {
       const newState = { ...state };
-      newState.nome = action.payload.nome;
+      newState.nome = action.payload.nome || state.nome;
+      newState.user.nome = action.payload.nome;
       newState.isLoading = false;
       return newState;
     }
